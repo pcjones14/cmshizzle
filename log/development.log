@@ -8441,3 +8441,67 @@ Processing by WelcomeController#index as HTML
 Completed 200 OK in 215ms (Views: 209.2ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/" for ::1 at 2016-12-07 14:59:07 -0700
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (34.1ms)
+Completed 500 Internal Server Error in 513ms (ActiveRecord: 8.8ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `articles_path' for #<#<Class:0x007fb8500a5c98>:0x007fb8500a4ac8>
+Did you mean?  article_path):
+    17:   				<%= link_to "CMShizzle", root_path, {class: 'navbar-brand'} %>
+    18:   			</div>
+    19:   			<ul class="nav navbar-nav">
+    20:   				<li><%= link_to "Articles", articles_path %></li>
+    21:   			</ul>
+    22:   		</div>
+    23:   	</nav>
+  
+app/views/layouts/application.html.erb:20:in `_app_views_layouts_application_html_erb__2783526792653982997_70214965544360'
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (11.2ms)
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.1ms)
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (51.5ms)
+Started GET "/" for ::1 at 2016-12-07 14:59:58 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (44.7ms)
+Completed 200 OK in 1000ms (Views: 965.3ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/articles/1" for ::1 at 2016-12-07 15:01:51 -0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 244ms (Views: 198.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/articles" for ::1 at 2016-12-07 15:01:53 -0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered articles/index.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 148ms (Views: 144.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/articles/1/edit" for ::1 at 2016-12-07 15:01:54 -0700
+Processing by ArticlesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mArticle Load (1.1ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering articles/edit.html.erb within layouts/application
+  Rendered articles/_form.html.erb (68.8ms)
+  Rendered articles/edit.html.erb within layouts/application (71.8ms)
+Completed 200 OK in 201ms (Views: 195.5ms | ActiveRecord: 1.1ms)
+
+
