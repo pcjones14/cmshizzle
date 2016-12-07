@@ -4,14 +4,14 @@
 	<tr>
 		<th>Title</th>
 		<th>Summary</th>
-		<th>Text</th>
+		<th>Visible</th>
 		<th>Options</th>
 	</tr>
 	<% @articles.each do |article| %>
 		<tr>
 			<td class="col-md-2"><%= truncate(article.title, length: 200) %></td>
-			<td class="col-md-2"><%= article.summary %></td>
-			<td class="col-md-5"><%= truncate(article.text, length: 200) %></td>
+			<td class="col-md-6"><%= article.summary %></td>
+			<td class="col-md-1"><%= "Yes" if article.visible %><%= "No" if !article.visible %></td>
 			<td class="col-md-3"><%= link_to "Show", article_path(article.id), {class: "btn btn-primary"} %> <%= link_to "Edit", edit_article_path(article.id), {class: "btn btn-warning"} %> <%= link_to "Delete", article_path(article.id), {class: "btn btn-danger", method: :delete} %></td>
 		</tr>
 	<% end %>
