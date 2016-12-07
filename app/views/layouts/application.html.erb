@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cms</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <!-- navbar stuff -->
+  	<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+  			<div class="navbar-header">
+  				<%= link_to "CMShizzle", root_path, {class: 'navbar-brand'} %>
+  			</div>
+  			<ul class="nav navbar-nav">
+  				<li><%= link_to "Articles", articles_path %></li>
+  			</ul>
+  		</div>
+  	</nav>
+
+    <!-- main content yield -->
+    <div class="container">
+
+      <!-- alerts and stuff -->
+      <% if flash[:success] %>
+        <div class="alert alert-success" role="alert"><%= flash[:success] %></div>
+      <% end %>
+
+    	<%= yield %>
+
+      <div class="panel panel-primary text-center small" style="margin:20px 0;padding:10px;">
+        Copyright &copy;2016 Payton Carter. All Rights Reserved.
+      </div>
+
+    </div>
+
+  </body>
+</html>

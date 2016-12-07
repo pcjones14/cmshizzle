@@ -1,0 +1,18 @@
+<h1 class="jumbotron">Welcome to my dumb website</h1>
+<div class="row">
+	<div class="col-md-10">
+		<div class="row">
+			<% @articles.each do |article| %>
+				<div class="col-md-5">
+					<div  style="height: 200px;border-radius: 20px;border:5px solid gray;margin: 15px 0;padding:10px;">
+						<h2><%= link_to article.title, article_path(article.id) %> <small>By <%= article.author %></small></h2>
+						<%= article.summary %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-md-2">
+		<p>Nav stuff goes here</p>
+	</div>
+</div>
