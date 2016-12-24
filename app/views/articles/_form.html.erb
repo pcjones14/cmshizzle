@@ -13,7 +13,7 @@
 			<div class="form-group">
 				<%= f.label :author %> <%= f.text_field :author, {class: "form-control"} %>
 			</div>
-			<strong>Published:</strong> <label class="radio-inline"><%= f.radio_button :visible, true %>Yes</label><label class="radio-inline"><%= f.radio_button :visible, false %>No</label>
+			<strong>Published:</strong> <label class="radio-inline"><%= f.radio_button :visible, true, checked: true %>Yes</label><label class="radio-inline"><%= f.radio_button :visible, false %>No</label>
 			<div class="form-group" style="padding-top:5px;"><%= f.submit "Submit", class: "btn btn-primary" %></div>
 		<% end %>
 	</div>

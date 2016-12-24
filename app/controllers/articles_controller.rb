@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   
   def index
-  	@articles = Article.all
+  	@articles = Article.all.order(updated_at: :desc)
   end
 
   def show
@@ -13,13 +13,17 @@ class ArticlesController < ApplicationController
   end
 
   def create
+
   	article = Article.new(article_params)
+
   	if article.save
-  		flash[:success] = 'Article was successfully created.'
+  		flash[:success] = ['Article was successfully created.']
   		redirect_to articles_path
   	else
-  		abort("Something went wrong in saving")
+  		flash[:error] = article.errors.full_messages
+      redirect_to :back
   	end
+
   end
 
   def edit
@@ -27,17 +31,31 @@ class ArticlesController < ApplicationController
   end
 
   def update
-  	if Article.find(params[:id]).update(article_params)
-  		flash[:success] = 'Article was successfully updated.'
+
+    article = Article.find(params[:id])
+
+  	if article.update(article_params)
+  		flash[:success] = ['Article was successfully updated.']
   		redirect_to articles_path
-  	end
+  	else
+      flash[:error] = article.errors.full_messages
+      redirect_to :back
+    end
+
   end
 
   def destroy
-  	if Article.destroy(params[:id])
-  		flash[:success] = 'Article was successfully deleted.'
+
+    article = Article.find(params[:id])
+
+  	if article.destroy
+  		flash[:success] = ['Article was successfully deleted.']
   		redirect_to articles_path
-  	end
+  	else
+      flash[:error] = article.errors.full_messages
+      redirect_to :back
+    end
+
   end
 
   private

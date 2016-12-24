@@ -1,3 +1,10 @@
 <h2><%= @article.title %> <small>By <%= @article.author %></small></h2>
-<h4><%= @article.summary %></h3>
-<%= raw @article.text %>
+<h4><%= @article.summary %></h4>
+<div class="row">
+	<div class="col-md-9">
+		<%= raw @article.text %>
+	</div>
+	<div class="col-md-3">
+		<p>Ads and junk</p>
+	</div>
+</div>
