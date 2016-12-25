@@ -13052,3 +13052,110 @@ Processing by ArticlesController#index as HTML
 Completed 200 OK in 133ms (Views: 128.7ms | ActiveRecord: 2.3ms)
 
 
+Started GET "/articles" for ::1 at 2016-12-25 03:12:06 -0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.3ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."updated_at" DESC[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered articles/index.html.erb within layouts/application (15.0ms)
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 166ms (Views: 161.6ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/articles/new" for ::1 at 2016-12-25 03:33:39 -0700
+Processing by ArticlesController#new as HTML
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (9.0ms)
+  Rendered articles/new.html.erb within layouts/application (11.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 174ms (Views: 167.8ms | ActiveRecord: 0.9ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 18]]
+  [1m[35m (26.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 22]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 21]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."category_id" = $1[0m  [["category_id", 6]]
+  [1m[35mSQL (0.9ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 6]]
+  [1m[35m (30.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArticle Load (0.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles" WHERE "articles"."category_id" = $1[0m  [["category_id", 8]]
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 8]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Mountain biking"], ["created_at", 2016-12-25 10:33:49 UTC], ["updated_at", 2016-12-25 10:33:49 UTC]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Hiking"], ["created_at", 2016-12-25 10:33:49 UTC], ["updated_at", 2016-12-25 10:33:49 UTC]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "author", "visible", "created_at", "updated_at", "summary", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "Mountain biking the Thunderbird Gardens"], ["text", "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris euismod urna sit amet justo sodales maximus. Aliquam erat volutpat. Maecenas pretium mauris id nulla sollicitudin sagittis et eget elit. Nulla consectetur arcu vel faucibus pulvinar. Pellentesque tincidunt elementum lacus, et eleifend nibh consectetur quis. Donec eget libero a neque dignissim faucibus ut nec turpis. Nulla facilisi.</p>\n\t<p>Nam venenatis ex non sollicitudin eleifend. Cras in lacus placerat, faucibus nisl sed, suscipit ligula. Aenean fringilla quam non luctus mollis. Etiam rhoncus, massa ut fermentum dignissim, enim nibh ultricies felis, id feugiat sapien erat rhoncus sem. Cras eget ante ultricies, vehicula mauris quis, consectetur elit. Quisque condimentum, lectus vel imperdiet sagittis, urna lectus porta metus, vitae tempus elit lacus nec nisl. Nullam suscipit tellus a urna finibus posuere. Ut ex ligula, porttitor eget tellus quis, venenatis sagittis nunc. Aenean ut dolor at magna malesuada pellentesque. Pellentesque scelerisque, ligula aliquam feugiat fringilla, ligula libero suscipit tortor, id euismod velit urna non lectus. Phasellus venenatis est sit amet tempus porttitor.</p>\n\t<p>Nullam viverra ornare erat, quis gravida lacus consectetur sit amet. Maecenas semper tristique diam non sollicitudin. In maximus hendrerit vehicula. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Praesent porta eros nisi, vel congue arcu laoreet sit amet. Vestibulum convallis, enim nec tempus dignissim, mauris dolor lobortis sem, eleifend aliquet lacus arcu id sem. Aenean fringilla tortor nec lorem varius placerat eget nec ipsum. Quisque malesuada non leo eu bibendum. Sed fringilla a purus vitae consectetur. Praesent fringilla quam eu ante tristique, at feugiat nunc ultricies. Mauris maximus, augue vel varius finibus, lacus massa hendrerit risus, nec vestibulum erat nunc non tellus. Aenean erat tortor, feugiat et elit a, posuere viverra nibh. Aliquam ullamcorper est eget nibh rutrum, nec laoreet ex porttitor.</p>"], ["author", "Payton"], ["visible", true], ["created_at", 2016-12-25 10:33:49 UTC], ["updated_at", 2016-12-25 10:33:49 UTC], ["summary", "Lots of trail, but most of it is more of a hassle to ride than a joy."], ["category_id", 9]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "author", "visible", "created_at", "updated_at", "summary", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "When Lake Powell Freezes Over"], ["text", "<p>Quisque nec nulla quis odio sodales maximus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur velit ipsum, maximus a blandit at, placerat eget lorem. Donec sagittis hendrerit justo, id aliquet eros sollicitudin non. Nullam scelerisque vitae arcu ut interdum. Aliquam erat volutpat. Nam aliquet, eros eu porta iaculis, sapien ligula gravida mi, at lacinia velit turpis vel tellus.</p>\n\t<p>Morbi suscipit lorem eget molestie consequat. Maecenas eu nisi quis magna tincidunt gravida sed vitae risus. Etiam tristique molestie neque ut fringilla. Praesent ullamcorper ut mauris non commodo. Aliquam tristique orci a eros aliquam, sit amet iaculis sem rutrum. Etiam pharetra, nunc et convallis imperdiet, felis odio pharetra nunc, id consectetur nunc urna porttitor sapien. Nunc malesuada metus nec risus tempor feugiat. Aenean consequat, est ut dignissim ornare, lorem odio eleifend lectus, nec consequat est metus sit amet eros. Nunc aliquet dui velit, at mollis mi suscipit id. Aliquam vestibulum velit velit. Sed efficitur nulla lacus, ut eleifend est pretium ac. Praesent condimentum pharetra risus, sed vestibulum justo auctor at. Etiam dignissim lacinia ligula vel tincidunt. Curabitur rhoncus vel ex et laoreet.</p>"], ["author", "Payton"], ["visible", true], ["created_at", 2016-12-25 10:33:49 UTC], ["updated_at", 2016-12-25 10:33:49 UTC], ["summary", "Visiting Lake Powell in the winter is a great way to escape the crowd and enjoy some hiking."], ["category_id", 10]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "author", "visible", "created_at", "updated_at", "summary", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "How to Not Hike a Slot Canyon"], ["text", "<p>Duis pharetra sapien vel volutpat ullamcorper. Praesent ornare, risus in finibus euismod, eros diam ullamcorper tortor, nec interdum felis enim luctus libero. In vitae odio luctus urna condimentum congue. Pellentesque eu sollicitudin dui, et condimentum lectus. Integer facilisis tortor eu semper faucibus. Donec et erat hendrerit, cursus ante sit amet, sodales risus. Fusce eu sapien sit amet nisl ornare vehicula. Suspendisse pellentesque nisl arcu, id volutpat dolor lacinia eget. Quisque vehicula enim eget aliquam volutpat. Phasellus dictum nulla quis rhoncus varius. Curabitur posuere quam quis scelerisque ultricies.</p>\n\t<p>Integer nisi lorem, vulputate quis dignissim ac, fermentum quis augue. Sed pretium enim at tincidunt tristique. In cursus urna risus, nec lobortis lacus rutrum lacinia. Maecenas tincidunt turpis sem, eget rutrum eros egestas ut. Cras scelerisque porta fringilla. Aenean tellus tellus, congue nec posuere sed, tristique vel turpis. Integer quis purus risus. Nam lobortis massa ut nunc hendrerit, sagittis suscipit sem efficitur. Sed fermentum nisi fringilla euismod sodales. Aenean condimentum fringilla dapibus. Donec fermentum tellus arcu, in varius purus commodo sit amet. Integer efficitur mi vitae nunc sagittis, nec sollicitudin quam mattis. Praesent at tempor nisl, non molestie nunc. Fusce velit metus, convallis vel sem id, lobortis pellentesque diam. Vestibulum id eleifend nulla. Aenean molestie tristique tellus, non maximus est posuere sit amet.</p>"], ["author", "Ryan"], ["visible", true], ["created_at", 2016-12-25 10:33:49 UTC], ["updated_at", 2016-12-25 10:33:49 UTC], ["summary", "Winter slot canyon adventures are a lot more fun when you're not wearing shorts and running shoes."], ["category_id", 10]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/articles" for ::1 at 2016-12-25 03:33:51 -0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."updated_at" DESC[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendered articles/index.html.erb within layouts/application (16.3ms)
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 137ms (Views: 132.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/articles/new" for ::1 at 2016-12-25 03:33:53 -0700
+Processing by ArticlesController#new as HTML
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (9.1ms)
+  Rendered articles/new.html.erb within layouts/application (11.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 130ms (Views: 125.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/articles" for ::1 at 2016-12-25 03:33:59 -0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GQx/GNR7R7qoVp54e6d1z8b17LlxxkONajLL3r4W86ZvX5JmnAO9fpzXqv+BUdDkxxA7ICh7o/Q4l2o0PFC57g==", "article"=>{"title"=>"asdfasdf", "summary"=>"asdfasdf", "text"=>"asdfasdf", "author"=>"asdfasdf", "category"=>"9", "visible"=>"true"}, "commit"=>"Submit"}
+Unpermitted parameter: category
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "author", "visible", "created_at", "updated_at", "summary", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "asdfasdf"], ["text", "asdfasdf"], ["author", "asdfasdf"], ["visible", true], ["created_at", 2016-12-25 10:33:59 UTC], ["updated_at", 2016-12-25 10:33:59 UTC], ["summary", "asdfasdf"], ["category_id", 9]]
+  [1m[35m (29.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 45ms (ActiveRecord: 31.9ms)
+
+
+Started GET "/articles" for ::1 at 2016-12-25 03:33:59 -0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."updated_at" DESC[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendered articles/index.html.erb within layouts/application (20.1ms)
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 142ms (Views: 137.4ms | ActiveRecord: 2.6ms)
+
+
