@@ -13159,3 +13159,354 @@ Processing by ArticlesController#index as HTML
 Completed 200 OK in 142ms (Views: 137.4ms | ActiveRecord: 2.6ms)
 
 
+Started DELETE "/articles/26" for ::1 at 2016-12-25 03:34:37 -0700
+Processing by ArticlesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"5jhWcO4SQO4yCbI/6NMXutIPyw8AncmDdw+s6BlqWEOQa7sOpmq6KgaIhrgSJbKR0+ocllkgKfolqg0CmywSCw==", "id"=>"26"}
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[31mDELETE FROM "articles" WHERE "articles"."id" = $1[0m  [["id", 26]]
+  [1m[35m (23.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 34ms (ActiveRecord: 25.9ms)
+
+
+Started GET "/articles" for ::1 at 2016-12-25 03:34:37 -0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (0.8ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."updated_at" DESC[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendered articles/index.html.erb within layouts/application (15.3ms)
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 135ms (Views: 131.1ms | ActiveRecord: 2.2ms)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8731138962975334290);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddAvatarToArticles (20161225111947)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.0ms)[0m  [1m[35mALTER TABLE "articles" ADD "image_file_name" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "articles" ADD "image_content_type" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "articles" ADD "image_file_size" integer[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "articles" ADD "image_updated_at" timestamp[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20161225111947"]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(8731138962975334290)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'articles'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (6.0ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'categories'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started GET "/" for ::1 at 2016-12-25 04:22:16 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WelcomeController#index as HTML
+  Rendering welcome/index.html.erb within layouts/application
+  [1m[36mArticle Load (3.5ms)[0m  [1m[34mSELECT "articles".* FROM "articles"[0m
+  Rendered welcome/index.html.erb within layouts/application (112.5ms)
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 872ms (Views: 814.3ms | ActiveRecord: 34.6ms)
+
+
+Started GET "/articles" for ::1 at 2016-12-25 04:22:21 -0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (1.6ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."updated_at" DESC[0m
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendered articles/index.html.erb within layouts/application (47.2ms)
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 247ms (Views: 240.5ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/articles/new" for ::1 at 2016-12-25 04:22:22 -0700
+Processing by ArticlesController#new as HTML
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (3.3ms)
+  Rendered articles/new.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.7ms)
+
+
+  
+SyntaxError (/home/payton/Documents/rails/cms/app/views/articles/_form.html.erb:3: syntax error, unexpected ',', expecting ')'
+...er.append=  form_for (@article, multipart: true) do |f| @out...
+...                               ^
+/home/payton/Documents/rails/cms/app/views/articles/_form.html.erb:31: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  
+app/views/articles/_form.html.erb:3: syntax error, unexpected ',', expecting ')'
+app/views/articles/_form.html.erb:31: syntax error, unexpected keyword_ensure, expecting end-of-input
+app/views/articles/new.html.erb:3:in `_app_views_articles_new_html_erb___2200929483915150814_69986447917860'
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (13.5ms)
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.6ms)
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (51.7ms)
+Started GET "/articles/new" for ::1 at 2016-12-25 04:22:44 -0700
+Processing by ArticlesController#new as HTML
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (72.5ms)
+  Rendered articles/new.html.erb within layouts/application (75.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 208ms (Views: 203.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/articles/new" for ::1 at 2016-12-25 04:23:02 -0700
+Processing by ArticlesController#new as HTML
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (10.6ms)
+  Rendered articles/new.html.erb within layouts/application (13.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 141ms (Views: 135.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/articles/new" for ::1 at 2016-12-25 04:23:57 -0700
+Processing by ArticlesController#new as HTML
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (9.9ms)
+  Rendered articles/new.html.erb within layouts/application (12.5ms)
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 141ms (Views: 135.8ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/articles" for ::1 at 2016-12-25 04:25:11 -0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VPgM9jHXmqBYnx3xk25ma94V8rP2Y+XMsKxlmvhzAAAiq+GIea9gZGweKXZpmMNA3/AlKq/eBbXiCcRwejVKSA==", "article"=>{"title"=>"asdfasdfasdf", "summary"=>"asdfasdfasdf", "text"=>"asdfasdfasdf", "author"=>"asdfasdfasdf", "category"=>"9", "visible"=>"true", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f4df44b52c8 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-1386-77464h.jpg>, @original_filename="antelope_canyon.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"article[image]\"; filename=\"antelope_canyon.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Submit"}
+Unpermitted parameter: category
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 21.5ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'image' for Article.):
+  
+app/controllers/articles_controller.rb:21:in `create'
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.5ms)
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.3ms)
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.5ms)
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (49.0ms)
+Started POST "/articles" for ::1 at 2016-12-25 04:28:23 -0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VPgM9jHXmqBYnx3xk25ma94V8rP2Y+XMsKxlmvhzAAAiq+GIea9gZGweKXZpmMNA3/AlKq/eBbXiCcRwejVKSA==", "article"=>{"title"=>"asdfasdfasdf", "summary"=>"asdfasdfasdf", "text"=>"asdfasdfasdf", "author"=>"asdfasdfasdf", "category"=>"9", "visible"=>"true", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f4dfa6a0b68 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-1386-1q2dled.jpg>, @original_filename="antelope_canyon.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"article[image]\"; filename=\"antelope_canyon.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Submit"}
+Unpermitted parameter: category
+Command :: file -b --mime '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-158j4ci.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-1qsq8jj.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-1qsq8jj.jpg[0]'
+Command :: convert '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-1qsq8jj.jpg[0]' -auto-orient -resize "100x100>" '/tmp/e952732149d22567056dda912234be1620161225-1386-1uvvtl2'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-1qsq8jj.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-1qsq8jj.jpg[0]'
+Command :: convert '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-1qsq8jj.jpg[0]' -auto-orient -resize "x200" -crop "200x200+60+0" +repage '/tmp/e952732149d22567056dda912234be1620161225-1386-10g87dq'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-1qsq8jj.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-1qsq8jj.jpg[0]'
+Command :: convert '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-1qsq8jj.jpg[0]' -auto-orient -resize "300x300>" '/tmp/e952732149d22567056dda912234be1620161225-1386-126dvu0'
+  [1m[36mCategory Load (1.8ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-pgni8s.jpg'
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "author", "visible", "created_at", "updated_at", "summary", "category_id", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["title", "asdfasdfasdf"], ["text", "asdfasdfasdf"], ["author", "asdfasdfasdf"], ["visible", true], ["created_at", 2016-12-25 11:28:33 UTC], ["updated_at", 2016-12-25 11:28:33 UTC], ["summary", "asdfasdfasdf"], ["category_id", 9], ["image_file_name", "antelope_canyon.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 3083979], ["image_updated_at", 2016-12-25 11:28:23 UTC]]
+[paperclip] saving /articles/images/000/000/027/original/antelope_canyon.jpg
+  [1m[35m (1.7ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 33908ms (ActiveRecord: 31.6ms)
+
+
+  
+Seahorse::Client::NetworkingError (Failed to open TCP connection to cmshizzle.s3.Oregon.amazonaws.com:443 (getaddrinfo: Name or service not known)):
+  
+app/controllers/articles_controller.rb:24:in `create'
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (16.7ms)
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (34.9ms)
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.0ms)
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (111.1ms)
+Started POST "/articles" for ::1 at 2016-12-25 07:12:24 -0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VPgM9jHXmqBYnx3xk25ma94V8rP2Y+XMsKxlmvhzAAAiq+GIea9gZGweKXZpmMNA3/AlKq/eBbXiCcRwejVKSA==", "article"=>{"title"=>"asdfasdfasdf", "summary"=>"asdfasdfasdf", "text"=>"asdfasdfasdf", "author"=>"asdfasdfasdf", "category"=>"9", "visible"=>"true", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f4e01827958 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-1386-fxtcdr.jpg>, @original_filename="antelope_canyon.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"article[image]\"; filename=\"antelope_canyon.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Submit"}
+Unpermitted parameter: category
+Command :: file -b --mime '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-1cium3z.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-j5pgry.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-j5pgry.jpg[0]'
+Command :: convert '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-j5pgry.jpg[0]' -auto-orient -resize "100x100>" '/tmp/9cdc7cd0283697e4ed2daf0cdb6c067820161225-1386-11ltunw'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-j5pgry.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-j5pgry.jpg[0]'
+Command :: convert '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-j5pgry.jpg[0]' -auto-orient -resize "x200" -crop "200x200+60+0" +repage '/tmp/9cdc7cd0283697e4ed2daf0cdb6c067820161225-1386-1cq9bit'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-j5pgry.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-j5pgry.jpg[0]'
+Command :: convert '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-j5pgry.jpg[0]' -auto-orient -resize "300x300>" '/tmp/9cdc7cd0283697e4ed2daf0cdb6c067820161225-1386-b2zrau'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-1386-1efoah5.jpg'
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "author", "visible", "created_at", "updated_at", "summary", "category_id", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["title", "asdfasdfasdf"], ["text", "asdfasdfasdf"], ["author", "asdfasdfasdf"], ["visible", true], ["created_at", 2016-12-25 14:12:27 UTC], ["updated_at", 2016-12-25 14:12:27 UTC], ["summary", "asdfasdfasdf"], ["category_id", 9], ["image_file_name", "antelope_canyon.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 3083979], ["image_updated_at", 2016-12-25 14:12:24 UTC]]
+[paperclip] saving /articles/images/000/000/028/original/antelope_canyon.jpg
+  [1m[35m (0.7ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 5288ms (ActiveRecord: 2.8ms)
+
+
+  
+Seahorse::Client::NetworkingError (Failed to open TCP connection to cmshizzle.s3.Oregon.amazonaws.com:443 (getaddrinfo: Name or service not known)):
+  
+app/controllers/articles_controller.rb:24:in `create'
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (20.4ms)
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.1ms)
+  Rendering /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.9ms)
+  Rendered /home/payton/.gem/ruby/2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (64.3ms)
+Started GET "/articles/new" for ::1 at 2016-12-25 07:15:26 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArticlesController#new as HTML
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  Rendering articles/new.html.erb within layouts/application
+  Rendered articles/_form.html.erb (148.5ms)
+  Rendered articles/new.html.erb within layouts/application (153.9ms)
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 987ms (Views: 865.4ms | ActiveRecord: 17.3ms)
+
+
+Started POST "/articles" for ::1 at 2016-12-25 07:15:35 -0700
+Processing by ArticlesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TSXdnwebFmrtCB02970hZES7lJE5h6rYwlce9t18hBQ7djDhT+PsrtmJKbENS4RPRV5DCGA6SqGQ8r8cXzrOXA==", "article"=>{"title"=>"asdfasdf", "summary"=>"asdfasdf", "text"=>"asdfasdf", "author"=>"asdfasdf", "category"=>"9", "visible"=>"true", "image"=>#<ActionDispatch::Http::UploadedFile:0x007fa44ec45eb0 @tempfile=#<Tempfile:/tmp/RackMultipart20161225-4512-1rzmtr.jpg>, @original_filename="antelope_canyon.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"article[image]\"; filename=\"antelope_canyon.jpg\"\r\nContent-Type: image/jpeg\r\n">}, "commit"=>"Submit"}
+Unpermitted parameter: category
+Command :: file -b --mime '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-4512-1rhur9h.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-4512-12x5jvi.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-4512-12x5jvi.jpg[0]'
+Command :: convert '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-4512-12x5jvi.jpg[0]' -auto-orient -resize "100x100>" '/tmp/e9ec06bf0167d14e841af2e222d1680120161225-4512-hgqiyx'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-4512-12x5jvi.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-4512-12x5jvi.jpg[0]'
+Command :: convert '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-4512-12x5jvi.jpg[0]' -auto-orient -resize "x200" -crop "200x200+60+0" +repage '/tmp/e9ec06bf0167d14e841af2e222d1680120161225-4512-uvnim4'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-4512-12x5jvi.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-4512-12x5jvi.jpg[0]'
+Command :: convert '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-4512-12x5jvi.jpg[0]' -auto-orient -resize "300x300>" '/tmp/e9ec06bf0167d14e841af2e222d1680120161225-4512-3ullbm'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+Command :: file -b --mime '/tmp/6e505a3130d376bd4516fdb89c792ae820161225-4512-19pad4y.jpg'
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "articles" ("title", "text", "author", "visible", "created_at", "updated_at", "summary", "category_id", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["title", "asdfasdf"], ["text", "asdfasdf"], ["author", "asdfasdf"], ["visible", true], ["created_at", 2016-12-25 14:15:37 UTC], ["updated_at", 2016-12-25 14:15:37 UTC], ["summary", "asdfasdf"], ["category_id", 9], ["image_file_name", "antelope_canyon.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 3083979], ["image_updated_at", 2016-12-25 14:15:35 UTC]]
+[paperclip] saving /articles/images/000/000/029/original/antelope_canyon.jpg
+[paperclip] saving /articles/images/000/000/029/thumb/antelope_canyon.jpg
+[paperclip] saving /articles/images/000/000/029/square/antelope_canyon.jpg
+[paperclip] saving /articles/images/000/000/029/medium/antelope_canyon.jpg
+  [1m[35m (26.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/articles
+Completed 302 Found in 6569ms (ActiveRecord: 29.2ms)
+
+
+Started GET "/articles" for ::1 at 2016-12-25 07:15:41 -0700
+Processing by ArticlesController#index as HTML
+  Rendering articles/index.html.erb within layouts/application
+  [1m[36mArticle Load (4.1ms)[0m  [1m[34mSELECT "articles".* FROM "articles" ORDER BY "articles"."updated_at" DESC[0m
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendered articles/index.html.erb within layouts/application (35.6ms)
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 195ms (Views: 185.4ms | ActiveRecord: 6.7ms)
+
+
+Started GET "/articles/29" for ::1 at 2016-12-25 07:17:45 -0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (3.6ms)
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 141ms (Views: 132.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/articles/29" for ::1 at 2016-12-25 07:17:47 -0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (3.8ms)
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 155ms (Views: 147.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/articles/29" for ::1 at 2016-12-25 07:22:49 -0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (2.9ms)
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 135ms (Views: 129.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/articles/29" for ::1 at 2016-12-25 07:22:53 -0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (3.4ms)
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 133ms (Views: 128.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/articles/29" for ::1 at 2016-12-25 07:23:24 -0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (3.3ms)
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 132ms (Views: 125.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/articles/29" for ::1 at 2016-12-25 07:27:51 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (20.9ms)
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 853ms (Views: 752.3ms | ActiveRecord: 14.6ms)
+
+
+Started GET "/articles/29" for ::1 at 2016-12-25 07:28:11 -0700
+Processing by ArticlesController#show as HTML
+  Parameters: {"id"=>"29"}
+  [1m[36mArticle Load (0.7ms)[0m  [1m[34mSELECT  "articles".* FROM "articles" WHERE "articles"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  Rendering articles/show.html.erb within layouts/application
+  Rendered articles/show.html.erb within layouts/application (3.9ms)
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+Completed 200 OK in 153ms (Views: 147.0ms | ActiveRecord: 1.4ms)
+
+
